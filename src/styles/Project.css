@@ -1,5 +1,5 @@
 .project-section {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,25 +25,24 @@
 
 .carousel-track {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem; /* Increased spacing */
   transition: transform 0.5s ease-in-out;
 }
 
 .card {
   flex: 0 0 calc(31% - 1rem);
   max-width: calc(31% - 1rem);
-  height: 450px;
-  padding: 1rem;
+  height: 460px;
+  padding: 1.5rem;
   background: linear-gradient(
     145deg,
-    var(--button-color),
-    var(--primary-background)
+    rgba(100, 255, 218, 0.2),
+    rgba(11, 19, 43, 0.9)
   );
-  color: var(--text-light);
+  color: var(--text-primary);
   text-align: center;
   border-radius: 15px;
-  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5),
-    -5px -5px 15px rgba(255, 255, 255, 0.05);
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -53,17 +52,16 @@
 
 /* ✨ Glowing Effect on Hover */
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 6px 20px var(--button-color); /* Glowing shadow */
+  box-shadow: 0px 6px 25px rgba(100, 255, 218, 0.7);
 }
 
 /* Card Image */
 .card-image {
   width: 100%;
-  height: 60%;
+  height: 55%;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 /* Card Content */
@@ -72,32 +70,40 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  padding: 0 1rem;
 }
 
 .card h3 {
-  font-size: 1.4rem;
-  color: var(--hero-intro);
-  margin-bottom: 5px;
-  font-weight: 600;
+  font-size: 1.5rem;
+  color: var(--button-color);
+  margin-bottom: 10px;
+  font-weight: 700;
 }
 
 .card p {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: var(--text-secondary);
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+  line-height: 1.5;
 }
 
-/* Links */
-.card a {
-  color: var(--link-color);
+/* View Project Button */
+.view-project-btn {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: var(--button-color);
+  color: var(--primary-background);
+  font-weight: 600;
   text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease, transform 0.3s ease;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
 }
 
-.card a:hover {
+.view-project-btn:hover {
+  background-color: var(--primary-background);
   color: var(--button-color);
   transform: scale(1.05);
+  box-shadow: 0px 4px 15px var(--button-color);
 }
 
 /* Arrow Navigation */
@@ -105,33 +111,55 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(120, 161, 187, 0.15);
-  border: 2px solid var(--hero-intro);
-  font-size: 1.8rem;
-  color: var(--hero-intro);
+  background: var(--button-color);
+  border: none;
+  font-size: 2rem;
+  color: var(--primary-background);
+  box-shadow: 0px rgba(0, 0, 0, 0.9);
   cursor: pointer;
   z-index: 10;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 4px 15px rgba(100, 255, 218, 0.4);
   transition: all 0.3s ease;
 }
 
+/* Make arrows more visible on hover */
 .arrow:hover {
-  background: var(--link-color);
+  background: var(--button-color);
   color: var(--primary-background);
-  transform: scale(1.15);
+  box-shadow: 0px 4px 15px var(--button-color);
 }
 
 /* Arrow Positioning */
 .left-arrow {
-  left: 0.8rem;
+  left: 1rem;
 }
 
 .right-arrow {
-  right: 0.8rem;
+  right: 1rem;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+  .card {
+    flex: 0 0 calc(45% - 1rem);
+    max-width: calc(45% - 1rem);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .carousel-track {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    flex: 1;
+    width: 90%;
+  }
 }

@@ -16,7 +16,8 @@ const projects = [
   {
     id: 2,
     title: "E-commerce Store",
-    description: "An e-commerce platform with a cart and payment gateway.",
+    description:
+      "An e-commerce platform with registration and add to cart feature.",
     image: e_commerce,
     link: "#",
   },
@@ -76,6 +77,7 @@ const Project = () => {
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="view-project-btn"
                 >
                   View Project
                 </a>

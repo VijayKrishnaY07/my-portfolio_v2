@@ -1,14 +1,29 @@
 .header {
-  background-color: var(--primary-background);
-  padding: 1rem 2rem;
+  background-color: rgba(11, 19, 43, 0.9); /* Slightly transparent background */
+  padding: 0.8rem 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
   position: sticky;
   top: 0;
   width: 100%;
-  z-index: 1000; /* Ensures header stays on top */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7); /* Professional shadow effect */
+  z-index: 1000;
+  transition: all 0.4s ease-in-out; /* Smooth transition effect */
+
+  /* ✅ Professional Header Box-Shadow */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.08),
+    0px 8px 20px rgba(100, 255, 218, 0.08);
+
+  /* ✅ Soft Glass Effect */
+  backdrop-filter: blur(8px);
+
+  /* ✅ Gradient Fade to Smooth Transition */
+  background: linear-gradient(
+    to bottom,
+    rgba(11, 19, 43, 0.95),
+    rgba(11, 19, 43, 0.85),
+    rgba(11, 19, 43, 0.7)
+  );
 }
 
 .navbar {
@@ -68,6 +83,12 @@
 
 /* Responsive Header */
 @media screen and (max-width: 768px) {
+  .header {
+    padding: 0.6rem 1.5rem;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.06),
+      0px 6px 18px rgba(100, 255, 218, 0.06);
+  }
+
   .navbar {
     flex-direction: column;
     text-align: center;
