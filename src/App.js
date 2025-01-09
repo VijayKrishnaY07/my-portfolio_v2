@@ -14,6 +14,7 @@ function App() {
         width: "100vw",
         minHeight: "100vh",
         overflowX: "hidden", // Prevent horizontal scrolling
+        position: "relative", // Ensure absolute/fixed elements align properly
       }}
     >
       <CssBaseline />
