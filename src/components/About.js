@@ -1,5 +1,12 @@
 import React from "react";
-import "../styles/About.css";
+import {
+  Box,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  CardMedia,
+} from "@mui/material";
 import reactIcon from "../assets/React.jpeg";
 import nextIcon from "../assets/next.jpeg";
 import typescriptIcon from "../assets/ts.jpeg";
@@ -13,66 +20,139 @@ import npmIcon from "../assets/npm2.jpeg";
 import nodeIcon from "../assets/node2.jpeg";
 import firebaseIcon from "../assets/firebase.jpeg";
 
+const skills = [
+  { img: reactIcon, name: "React.js" },
+  { img: nextIcon, name: "Next.js" },
+  { img: typescriptIcon, name: "TypeScript" },
+  { img: htmlIcon, name: "HTML5" },
+  { img: cssIcon, name: "CSS3" },
+  { img: jsIcon, name: "JavaScript" },
+  { img: tailwindIcon, name: "Tailwind" },
+  { img: graphqlIcon, name: "GraphQL" },
+  { img: gitIcon, name: "Git & GitHub" },
+  { img: npmIcon, name: "NPM" },
+  { img: nodeIcon, name: "Node.js" },
+  { img: firebaseIcon, name: "Firebase" },
+];
+
 const About = () => {
   return (
-    <section id="about" className="about">
-      <div className="about-content">
-        <h2 className="about-heading">About Me</h2>
-        <p className="about-description">
-          I'm a <strong>front-end React developer</strong> with a passion for{" "}
+    <Box
+      id="about"
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: { xs: "column", md: "row" },
+        alignItems: "center",
+        justifyContent: "space-between",
+        padding: { xs: "4rem 2rem", md: "6rem 10%" },
+        backgroundColor: "#0b132b",
+        color: "white",
+      }}
+    >
+      {/* About Me Section */}
+      <Box sx={{ flex: 1, maxWidth: { xs: "100%", md: "50%" } }}>
+        <Typography variant="h3" fontWeight="bold" color="#64ffda" mb={2}>
+          About Me
+        </Typography>
+        <Typography variant="h5" fontWeight="bold" mb={2}>
+          Passionate Front-End Developer Crafting Engaging Web Experiences
+        </Typography>
+        <Typography
+          variant="body1"
+          sx={{
+            fontSize: "1.2rem",
+            lineHeight: "1.6",
+            color: "#8892b0",
+            textAlign: "justify",
+          }}
+        >
+          I specialize in building{" "}
           <strong>
-            building dynamic, scalable, and high-performance web applications
-          </strong>
-          . With hands-on experience in modern frameworks.
-        </p>
-        <p className="about-description">
-          My skill set includes{" "}
-          <strong>
-            React.js, JavaScript (ES6+), TypeScript, Next.js, Redux, GraphQL,
-            and API integrations
-          </strong>
-          . I'm also proficient in{" "}
-          <strong>
-            CSS frameworks such as Tailwind CSS, Material-UI, and Styled
-            Components
-          </strong>
-          , ensuring <strong>aesthetic and responsive UI designs</strong>.
-        </p>
-        <p className="about-description">
-          I'm comfortable working with{" "}
-          <strong>version control systems like Git</strong>, package managers
-          like <strong>NPM</strong>, and backend technologies like
-          <strong>Node.js & Firebase</strong>. Whether it's developing
-          interactive components or optimizing web performance, I ensure{" "}
-          <strong>clean, maintainable, and scalable code</strong>.
-        </p>
-      </div>
+            interactive, scalable, and high-performance web applications.
+          </strong>{" "}
+          My expertise lies in{" "}
+          <strong>React.js, JavaScript, TypeScript,</strong> and UI frameworks
+          like
+          <strong> Material-UI & Tailwind CSS.</strong> I focus on{" "}
+          <strong>clean, accessible, and visually appealing</strong> digital
+          experiences.
+        </Typography>
+      </Box>
 
-      <div className="skills-container">
-        <h3 className="skills-heading">Technologies I Work With</h3>
-        <div className="skills-grid">
-          {[
-            { img: reactIcon, name: "React.js" },
-            { img: nextIcon, name: "Next.js" },
-            { img: typescriptIcon, name: "TypeScript" },
-            { img: htmlIcon, name: "HTML5" },
-            { img: cssIcon, name: "CSS3" },
-            { img: jsIcon, name: "JavaScript" },
-            { img: tailwindIcon, name: "Tailwind CSS" },
-            { img: graphqlIcon, name: "GraphQL" },
-            { img: gitIcon, name: "Git & GitHub" },
-            { img: npmIcon, name: "NPM" },
-            { img: nodeIcon, name: "Node.js" },
-            { img: firebaseIcon, name: "Firebase" },
-          ].map((skill, index) => (
-            <div className="skill-card" key={index}>
-              <img src={skill.img} alt={skill.name} />
-              <p>{skill.name}</p>
-            </div>
+      {/* Skills Section */}
+      <Box
+        sx={{
+          flex: 1,
+          backgroundColor: "#121e33",
+          padding: "2rem",
+          borderRadius: "12px",
+          boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.3)",
+          maxWidth: { xs: "100%", md: "45%" },
+          mt: { xs: 4, md: 0 },
+        }}
+      >
+        <Typography
+          variant="h5"
+          fontWeight="bold"
+          color="#64ffda"
+          textAlign="center"
+          mb={3}
+        >
+          Technologies I Work With
+        </Typography>
+
+        {/* Skills Grid */}
+        <Grid container spacing={2} justifyContent="center">
+          {skills.map((skill, index) => (
+            <Grid item xs={4} sm={3} md={3} key={index}>
+              <Card
+                sx={{
+                  backgroundColor: "#0b132b",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "1rem",
+                  borderRadius: "8px",
+                  boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.2)",
+                  transition:
+                    "transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out",
+                  "&:hover": {
+                    transform: "scale(1.05)",
+                    boxShadow: "0px 4px 15px #64ffda",
+                  },
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image={skill.img}
+                  alt={skill.name}
+                  sx={{
+                    width: 50,
+                    height: 50,
+                    objectFit: "contain",
+                    marginBottom: "0.5rem",
+                  }}
+                />
+                <CardContent sx={{ textAlign: "center", padding: "0" }}>
+                  <Typography
+                    variant="body2"
+                    sx={{
+                      color: "#8892b0",
+                      fontWeight: "bold",
+                      fontSize: "0.9rem",
+                    }}
+                  >
+                    {skill.name}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Grid>
           ))}
-        </div>
-      </div>
-    </section>
+        </Grid>
+      </Box>
+    </Box>
   );
 };
 

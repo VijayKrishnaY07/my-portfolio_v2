@@ -1,32 +1,31 @@
 import React, { useRef, useState, useEffect } from "react";
-import { FaArrowUp } from "react-icons/fa"; // Import an up arrow icon
-import "../styles/Contact.css";
+import {
+  Box,
+  Typography,
+  TextField,
+  Button,
+  Container,
+  Dialog,
+  DialogContent,
+  DialogActions,
+  Fab,
+} from "@mui/material";
+import { ArrowUpward } from "@mui/icons-material";
 import emailjs from "emailjs-com";
 
 function Contact() {
   const form = useRef();
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
-  const [showArrow, setShowArrow] = useState(false); // State to manage arrow visibility
+  const [showArrow, setShowArrow] = useState(false);
 
   useEffect(() => {
-    const contactSection = document.getElementById("contact");
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowArrow(entry.isIntersecting); // Show arrow only when Contact section is visible
-      },
-      { threshold: 0.5 }
-    );
-
-    if (contactSection) {
-      observer.observe(contactSection);
-    }
-
-    return () => {
-      if (contactSection) {
-        observer.unobserve(contactSection);
-      }
+    const handleScroll = () => {
+      setShowArrow(window.scrollY > 500);
     };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const sendEmail = (e) => {
@@ -40,13 +39,13 @@ function Contact() {
         "s-OjtRcMWpJQeY0je" // Replace with your Public Key
       )
       .then(
-        (result) => {
+        () => {
           setPopupMessage(
             "Thank you for reaching out! I’m excited to connect and will respond to your message promptly."
           );
           setShowPopup(true);
         },
-        (error) => {
+        () => {
           setPopupMessage(
             "Oops! Something went wrong. Please try again later."
           );
@@ -57,78 +56,136 @@ function Contact() {
     e.target.reset();
   };
 
-  const scrollToHero = () => {
-    const heroSection = document.getElementById("hero");
-    if (heroSection) {
-      heroSection.scrollIntoView({ behavior: "smooth" });
-    }
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <section id="contact" className="contact-section">
-      <h2 className="contact-heading">Let's Connect</h2>
-      <p className="contact-subtext">
+    <Box
+      id="contact"
+      sx={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: { xs: "4rem 2rem", md: "6rem 4rem" },
+        backgroundColor: "#0b132b",
+        color: "white",
+        textAlign: "center",
+      }}
+    >
+      <Typography variant="h3" fontWeight="bold" mb={2}>
+        Let's Connect
+      </Typography>
+      <Typography
+        variant="body1"
+        sx={{ fontSize: "1.2rem", color: "#8892b0", mb: 4 }}
+      >
         I’d love to hear from you! Please fill out the form below, and I’ll get
         back to you shortly.
-      </p>
-      <form ref={form} onSubmit={sendEmail} className="contact-form">
-        <div className="form-group">
-          <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            id="name"
-            name="user_name"
-            placeholder="Enter Your Name"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="user_email"
-            placeholder="Enter Your Email"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="message">Message</label>
-          <textarea
-            id="message"
-            name="message"
-            placeholder="Enter Your Message"
-            rows="5"
-            required
-          ></textarea>
-        </div>
-        <button type="submit" className="submit-button">
-          <strong>Submit</strong>
-        </button>
-      </form>
+      </Typography>
 
-      {/* Floating Arrow Button */}
+      <Container maxWidth="sm">
+        <Box
+          component="form"
+          ref={form}
+          onSubmit={sendEmail}
+          sx={{
+            backgroundColor: "#1c2541",
+            padding: "2rem",
+            borderRadius: "10px",
+            boxShadow: "0px 6px 20px rgba(0, 0, 0, 0.3)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            "&:hover": { boxShadow: "0px 6px 20px #64ffda" },
+          }}
+        >
+          <TextField
+            fullWidth
+            label="Name"
+            name="user_name"
+            variant="outlined"
+            required
+            sx={{
+              mb: 2,
+              input: { color: "white" },
+              label: { color: "#64ffda" },
+            }}
+          />
+          <TextField
+            fullWidth
+            label="Email"
+            name="user_email"
+            type="email"
+            variant="outlined"
+            required
+            sx={{
+              mb: 2,
+              input: { color: "white" },
+              label: { color: "#64ffda" },
+            }}
+          />
+          <TextField
+            fullWidth
+            label="Message"
+            name="message"
+            multiline
+            rows={5}
+            variant="outlined"
+            required
+            sx={{
+              mb: 3,
+              input: { color: "white" },
+              label: { color: "#64ffda" },
+            }}
+          />
+          <Button
+            type="submit"
+            variant="contained"
+            sx={{
+              backgroundColor: "#64ffda",
+              color: "#0b132b",
+              fontWeight: "bold",
+              "&:hover": { backgroundColor: "#3a506b" },
+            }}
+          >
+            Submit
+          </Button>
+        </Box>
+      </Container>
+
+      {/* Scroll-to-Top Button */}
       {showArrow && (
-        <button className="scroll-to-top" onClick={scrollToHero}>
-          <FaArrowUp />
-        </button>
+        <Fab
+          color="primary"
+          onClick={scrollToTop}
+          sx={{
+            position: "fixed",
+            bottom: "2rem",
+            right: "2rem",
+            backgroundColor: "#64ffda",
+            color: "#0b132b",
+            "&:hover": { backgroundColor: "#3a506b" },
+          }}
+        >
+          <ArrowUpward />
+        </Fab>
       )}
 
       {/* Popup Modal */}
-      {showPopup && (
-        <div className="popup">
-          <div className="popup-content">
-            <p>{popupMessage}</p>
-            <button
-              onClick={() => setShowPopup(false)}
-              className="close-button"
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
-    </section>
+      <Dialog open={showPopup} onClose={() => setShowPopup(false)}>
+        <DialogContent>
+          <Typography>{popupMessage}</Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setShowPopup(false)} color="primary">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
+    </Box>
   );
 }
 

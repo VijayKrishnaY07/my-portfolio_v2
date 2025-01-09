@@ -1,23 +1,29 @@
 import React from "react";
+import { Box, CssBaseline } from "@mui/material";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
 import Project from "./components/Project";
 import Contact from "./components/Contact";
-
 import SocialMediaIcons from "./components/SocialMediaIcons";
-import "./App.css";
 
 function App() {
   return (
-    <div className="App">
+    <Box
+      sx={{
+        width: "100vw",
+        minHeight: "100vh",
+        overflowX: "hidden", // Prevent horizontal scrolling
+      }}
+    >
+      <CssBaseline />
       <Header />
       <Hero />
       <About />
       <Project />
       <Contact />
       <SocialMediaIcons />
-    </div>
+    </Box>
   );
 }
 

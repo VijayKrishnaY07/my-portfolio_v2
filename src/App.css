@@ -1,57 +1,12 @@
 :root {
-  --primary-background: #0b132b; /* Oxford Blue - Deep, modern background */
-  --secondary-background: #1c2541; /* Space Cadet - Strong contrast */
-  --accent-color: #3a506b; /* YInMn Blue - Subtle highlight */
-  --text-primary: #e6f1ff; /* White - High readability */
-  --text-secondary: #8892b0; /* Verdigris - Soft secondary contrast */
-  --button-color: #64ffda; /* Vibrant button color */
-  --button-hover: #3a506b; /* Darker hover effect */
+  --primary-background: #0b132b;
+  --text-primary: #e6f1ff;
 }
 
-.App {
+body {
+  background-color: var(--primary-background);
+  color: var(--text-primary);
   font-family: "Arial", sans-serif;
-  line-height: 1.6;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  background-color: var(--primary-background); /* Overall background */
-  color: var(--text-primary); /* Readable text color */
-}
-
-a {
-  text-decoration: none;
-  color: var(--accent-color);
-  transition: color 0.3s ease-in-out;
-}
-
-a:hover {
-  color: #ffc482; /* Brighter link hover effect */
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  color: var(--text-primary); /* Headings use bright contrast */
-}
-
-p {
-  color: var(--text-secondary); /* Subtle contrast for paragraph text */
-}
-
-button {
-  font-family: "Arial", sans-serif;
-  cursor: pointer;
-  background-color: var(--button-color);
-  color: var(--primary-background);
-  border: none;
-  padding: 10px 15px;
-  border-radius: 5px;
-  transition: background-color 0.3s ease-in-out;
-}
-
-button:hover {
-  background-color: var(--button-hover);
 }
