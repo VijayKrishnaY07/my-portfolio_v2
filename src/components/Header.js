@@ -25,7 +25,7 @@ function Header() {
     { label: "Contact", href: "#contact" },
     {
       label: "Resume",
-      href: "/Vijay_Krishna_Yarabarla_Front_End_Developer.pdf",
+      href: "/Vijay_Krishna_Resume.pdf",
       external: true,
     },
   ];
