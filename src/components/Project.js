@@ -23,29 +23,29 @@ const projects = [
     title: "Task Management App",
     description: "An app to manage tasks with drag-and-drop functionality.",
     image: todo_list,
-    link: "#",
+    link: "https://vijaykrishnay07.github.io/E-Commerce/",
   },
   {
     id: 2,
     title: "E-commerce Store",
     description:
-      "An e-commerce platform with registration and add to cart feature.",
+      "An e-commerce platform with user registration, Google Sign-In, and add-to-cart features.",
     image: e_commerce,
-    link: "#",
+    link: "https://vijaykrishnay07.github.io/E-Commerce/",
   },
   {
     id: 3,
     title: "Weather App",
     description: "A weather forecast app using OpenWeatherMap API.",
     image: weather_app,
-    link: "#",
+    link: "https://vijaykrishnay07.github.io/E-Commerce/",
   },
   {
     id: 4,
     title: "Chat Application",
     description: "A real-time chat application using WebSocket.",
     image: chat_application,
-    link: "#",
+    link: "https://vijaykrishnay07.github.io/E-Commerce/",
   },
 ];
 
